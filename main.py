@@ -5,6 +5,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.handlers import MessageHandler
 import json
 import database
+import alive
 from pyrogram.errors import (PeerIdInvalid, UserIsBlocked, MessageTooLong)
 from pyrogram.types import (InlineQueryResultArticle, InputTextMessageContent,
                             InlineKeyboardMarkup, InlineKeyboardButton)
@@ -64,6 +65,28 @@ async def buttons(client, message):
         reply_to_message_id=message.message_id)
 
 
+@ostrich.on_message(filters.command(["help"]) & mode_filter)
+async def help(client, message):
+
+    await message.reply_text(text=f'''
+Here is a detailed guide to use me.
+You can use me to get JSON responses of your messages.
+
+**Supports:**
+   - `Messages`
+   - `Inline Query`
+   - `Callback Query`
+
+Use /set to switch between `bot API` and `MTProto` mode and /button to generate sample inline keyboard buttons.''',
+                             disable_web_page_preview=True,
+                             reply_markup=InlineKeyboardMarkup([[
+                                 InlineKeyboardButton(
+                                     "Get Help",
+                                     url="https://t.me/ostrichdiscussion/"),
+                             ]]),
+                             reply_to_message_id=message.message_id)
+
+
 @ostrich.on_message(filters.command(["start"]) & mode_filter)
 async def start(client, message):
 
@@ -100,7 +123,7 @@ async def set(client, message):
         reply_markup=InlineKeyboardMarkup([[
             InlineKeyboardButton("bot API", callback_data="set_botapi"),
         ], [
-            InlineKeyboardButton("MTProto API", callback_data="set_mtproto"),
+            InlineKeyboardButton("MTProto", callback_data="set_mtproto"),
         ]]),
         reply_to_message_id=message.message_id)
 
@@ -141,8 +164,10 @@ async def inline_result(client, inline_query):
         await client.send_message(
             chat_id=inline_query.from_user.id,
             text=f"```{formatted}```",
+            # parse_mode=,
             disable_web_page_preview=True,
             disable_notification=True,
+            # reply_to_message_id=,
         )
     except MessageTooLong:
         file = open("json.txt", "w+")
@@ -193,11 +218,11 @@ Here is a detailed guide to use me.
 You can use me to get JSON responses of your messages.
 
 **Supports:**
-   - `Messages`
-   - `Inline Query`
-   - `Callback Query`
-   
-Use /set to switch between `bot API` and `MTProto` mode.
+   - ```Messages```
+   - ```Inline Query```
+   - ```Callback Query```
+
+Use /set to switch between ``|bot API``` and ```MTProto``` mode and /button to generate sample inline keyboard buttons.
 ''',
             reply_markup=InlineKeyboardMarkup([[
                 InlineKeyboardButton("Get Help",
@@ -229,7 +254,6 @@ Use /set to switch between `bot API` and `MTProto` mode.
                 caption="responseJSONbot",
                 disable_notification=True,
             )
-
 
 if __name__ == '__main__':
     pyro = Process(target=ostrich.run)
