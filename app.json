@@ -1,0 +1,59 @@
+{
+  "name": "responseJSON bot",
+  "description": "A simple bot to get telegram API responses.",
+  "keywords": [
+    "telegram",
+    "python",
+    "bots",
+    "mtproto",
+    "botapi"
+  ],
+  "website": "https://telegram.dog/theostrich",
+  "repository": "https://github.com/theostrich/responseJSON-bot",
+  "success_url": "https://telegram.dog/responseJSONBot",
+  "env": {
+    "ENV": {
+      "description": "Setting this to ANYTHING will enable env variables",
+      "value": "OSTRICH"
+    },
+    "apiID": {
+      "description": "Your telegram api ID.",
+      "value": ""
+    },
+    "apiHASH": {
+      "description": "Your telegram api Hash.",
+      "value": ""
+    },
+    "botTOKEN": {
+      "description": "Your bot's token. Get this value from @botfather.",
+      "value": ""
+    },
+    "MongoDB_URI": {
+      "description": "MongoDB connection URI.",
+      "value": ""
+    },
+    "database": {
+      "description": "MongoDB database name",
+      "value": "JSONbot"
+    },
+    "userCollection": {
+      "description": "MongoDB user collection name",
+      "value": "users"
+    },
+    "groupCollection": {
+      "description": "MongoDB group collection name",
+      "value": "groups"
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
