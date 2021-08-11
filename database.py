@@ -3,7 +3,7 @@ import json
 from config import MongoDB_URI, database, collection
 
 client = pymongo.MongoClient(MongoDB_URI)
-db = client[collection['user']]
+db = client[database]
 
 
 def scrape(data):
