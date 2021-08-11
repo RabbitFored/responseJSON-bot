@@ -2,3 +2,4 @@ dnspython
 PyYAML==5.4.1
 Pyrogram==1.2.9
 pymongo
+python-telegram-bot
