@@ -212,11 +212,11 @@ Here is a detailed guide to use me.
 You can use me to get JSON responses of your messages.
 
 **Supports:**
-   - ```Messages```
-   - ```Inline Query```
-   - ```Callback Query```
+   - `Messages`
+   - `Inline Query`
+   - `Callback Query`
 
-Use /set to switch between ```bot API``` and ```MTProto``` mode and /button to generate sample inline keyboard buttons.
+Use /set to switch between `bot API` and `MTProto` mode and /button to generate sample inline keyboard buttons.
 ''',
                                   reply_markup=InlineKeyboardMarkup([[
                                     InlineKeyboardButton(

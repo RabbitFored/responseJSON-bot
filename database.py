@@ -1,8 +1,7 @@
 import pymongo
-import json
 from config import MongoDB_URI, database, collection
 
-client = pymongo.MongoClient(MongoDB_URI)
+client = pymongo.MongoClient(MongoDB_URI,connect=False)
 db = client[database]
 
 
@@ -73,7 +72,7 @@ def set_mode(userid, mode):
 
     filter = {"userid": userid}
     values = {"$set": {"mode": mode}}
-    mycollection.update(filter, values)
+    mycollection.update_one(filter, values)
 
 
 def user_exist(chatid, chattype):

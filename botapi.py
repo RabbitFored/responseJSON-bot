@@ -1,10 +1,8 @@
-from telegram import Update, ForceReply, InlineQueryResultArticle, InputTextMessageContent
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler, CallbackContext, filters, CallbackQueryHandler
+from telegram import Update,InlineQueryResultArticle, InputTextMessageContent
+from telegram.ext import Updater, CommandHandler, MessageHandler, InlineQueryHandler, CallbackContext, filters, CallbackQueryHandler
 import database
-import json
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from uuid import uuid4
-from telegram.utils.helpers import escape_markdown
 from config import botTOKEN
 
 
