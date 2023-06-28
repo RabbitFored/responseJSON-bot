@@ -167,7 +167,7 @@ Use /set to switch between `bot API` and `MTProto` mode\.
                     parse_mode='html',
                     disable_web_page_preview=True,
                     disable_notification=True,
-                    # reply_to_message_id=,
+        
                 )
             except:
                 file = open("json.txt", "w+")
