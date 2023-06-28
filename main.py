@@ -251,9 +251,7 @@ Use /set to switch between `bot API` and `MTProto` mode and /button to generate 
       )
 
 
-myclient = pymongo.MongoClient(os.environ['mongouri'])
-db = myclient['JSONorg']
-collection = db["usercache"]
+collection = database.db["usercache"]
 
 
 @ostrich.on_message(filters.command(["broadcast"]))
