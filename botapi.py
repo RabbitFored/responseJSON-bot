@@ -76,6 +76,12 @@ def new_message(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(f"<code>{update}</code>", parse_mode="html")
 
 
+def copy(update: Update, context: CallbackContext) -> None:
+    context.bot.copy_message(chat_id=update.message.chat.id,
+                 from_chat_id=update.message.chat_id,
+                 message_id=update.message.reply_to_message.message_id,
+                 reply_markup=update.message.reply_to_message.reply_markup)
+
 class ModeFilter(filters.UpdateFilter):
     def filter(self, update: Update) -> bool:
 
@@ -179,6 +185,7 @@ def main() -> None:
 
     dispatcher.add_handler(CommandHandler("start", start, ModeFilter()))
     dispatcher.add_handler(CommandHandler("help", help, ModeFilter()))
+    dispatcher.add_handler(CommandHandler("copy", copy, ModeFilter()))
     dispatcher.add_handler(CommandHandler("button", button, ModeFilter()))
     dispatcher.add_handler(CommandHandler("set", set_mode, ModeFilter()))
     dispatcher.add_handler(CallbackQueryHandler(callback))
@@ -188,4 +195,3 @@ def main() -> None:
 
     updater.start_polling()
     updater.idle()
-
