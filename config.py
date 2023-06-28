@@ -9,10 +9,10 @@ if ENV:
     apiHASH = os.environ.get('apiHASH', None)
     botTOKEN = os.environ.get('botTOKEN', None)
 
-    MongoDB_URI = os.environ.get("MongoDB_URI", "")
+    MongoDB_URI = os.environ.get("mongouri", "")
     database = os.environ.get("database", None)
-    user_collection = os.environ.get('userCollection', "")
-    group_collection = os.environ.get('groupCollection', "")
+    user_collection = os.environ.get('userCollection', "usercache")
+    group_collection = os.environ.get('groupCollection', "groupcache")
     collection = {'user': user_collection, 'group': group_collection}
 
 elif os.path.isfile(secrets_path):
@@ -29,6 +29,6 @@ elif os.path.isfile(secrets_path):
 
 else:
     print(
-        'This app is not configured correctly. Check README or contact support team.'
+        'This app is not configured correctly. Check README or contact support.'
     )
     quit(1)

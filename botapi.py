@@ -1,4 +1,4 @@
-from telegram import Update, ForceReply, InlineQueryResultArticle, InputTextMessageContent, ParseMode
+from telegram import Update, ForceReply, InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler, CallbackContext, filters, CallbackQueryHandler
 import database
 import json
