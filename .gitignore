@@ -138,3 +138,5 @@ poetry.lock
 pyproject.toml
 .breakpoints
 json.txt
+*.session
+*.session-journal
