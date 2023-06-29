@@ -9,8 +9,6 @@ from pyrogram.types import (InlineQueryResultArticle, InputTextMessageContent,
                             InlineKeyboardMarkup, InlineKeyboardButton)
 from config import apiID, apiHASH, botTOKEN
 import time
-import pymongo
-import os
 
 
 async def func(_, __, m):
@@ -66,7 +64,7 @@ async def buttons(client, message):
 @ostrich.on_message(filters.command(["help"]) & mode_filter)
 async def help(client, message):
 
-  await message.reply_text(text=f'''
+  await message.reply_text(text='''
 Here is a detailed guide to use me.
 You can use me to get JSON responses of your messages.
 
