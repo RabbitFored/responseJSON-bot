@@ -205,7 +205,7 @@ async def cb_handler(client, query):
     await query.message.reply_text(text=f"**Mode set to {mode} successfully**")
   elif query.data == "getHELP":
     await query.answer()
-    await query.message.edit_text(text=f'''
+    await query.message.edit_text(text='''
 Here is a detailed guide to use me.
 You can use me to get JSON responses of your messages.
 
